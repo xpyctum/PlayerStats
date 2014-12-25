@@ -26,9 +26,9 @@
       <file leaf-file-name="PlayerStats.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="119" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.8440367" vertical-offset="985" max-vertical-offset="2856">
+            <state line="81" column="49" selection-start="2972" selection-end="2972" vertical-scroll-proportion="0.5944954" vertical-offset="1053" max-vertical-offset="2873">
               <folding>
-                <element signature="e#44#73#0" expanded="true" />
+                <element signature="e#32#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -254,14 +254,16 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding>
-            <element signature="e#44#73#0" expanded="true" />
+            <element signature="e#32#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -282,9 +284,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="119" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.8440367" vertical-offset="985" max-vertical-offset="2856">
+        <state line="81" column="49" selection-start="2972" selection-end="2972" vertical-scroll-proportion="0.5944954" vertical-offset="1053" max-vertical-offset="2873">
           <folding>
-            <element signature="e#44#73#0" expanded="true" />
+            <element signature="e#32#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

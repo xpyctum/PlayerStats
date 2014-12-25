@@ -1,6 +1,6 @@
 <?php
 
-namespace PlayerStats\PlayerStats;
+namespace PlayerStats;
 
 
 use pocketmine\entity\Entity;
@@ -62,11 +62,11 @@ class PlayerStats extends PluginBase implements Listener{
         $this->getServer()->getLogger()->info("Successfully connected to MySQL server");
     }
     public function onDisable(){
-        $this->db->close();
+
     }
-    public function getPlayer(IPlayer $player){
+    public function getPlayer(Player $player){
         $name = trim(strtolower($player->getName()));
-        $result = $this->db->query("SELECT * FROM player_stats WHERE name = '" . $this->db->escape_string($name)."'");
+        $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
         if($result instanceof \mysqli_result){
             $data = $result->fetch_assoc();
             $result->free();
@@ -79,7 +79,7 @@ class PlayerStats extends PluginBase implements Listener{
     }
     public function BlockBreakEvent(BlockBreakEvent $e){
         if(!$e->isCancelled()){
-            if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
+            if($this->getPlayer($e->getPlayer()) == null){
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
@@ -92,7 +92,7 @@ class PlayerStats extends PluginBase implements Listener{
     }
     public function DeathEvent(PlayerDeathEvent $e){
         if(!$e->isCancelled()){
-            if(!$this->getPlayer($e->getEntity()->getPlayer()->getDisplayName()) !== null){
+            if($this->getPlayer($e->getEntity()->getPlayer()) == null){
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
@@ -104,7 +104,7 @@ class PlayerStats extends PluginBase implements Listener{
         }
     }
     public function DropEvent(PlayerDropItemEvent $e){
-        if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
+        if($this->getPlayer($e->getPlayer()) == null){
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
@@ -116,7 +116,7 @@ class PlayerStats extends PluginBase implements Listener{
     }
     public function BlockPlaceEvent(BlockPlaceEvent $e){
         if(!$e->isCancelled()){
-            if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
+            if($this->getPlayer($e->getPlayer()) == null){
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
@@ -128,7 +128,7 @@ class PlayerStats extends PluginBase implements Listener{
         }
     }
     public function KickEvent(PlayerKickEvent $e){
-        if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
+        if($this->getPlayer($e->getPlayer()) == null){
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
@@ -139,25 +139,26 @@ class PlayerStats extends PluginBase implements Listener{
         }
     }
     public function JoinEvent(PlayerJoinEvent $e){
-        if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
+        if($this->getPlayer($e->getPlayer()) == null){
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
 			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
-            $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
+            $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getDisplayName())."'");
         }
     }
-    public function QuitEvent(PlayerQuitEvent $e){
-        if(!$this->getPlayer($e->getPlayer()->getDisplayName()) !== null){
-            $this->db->query("INSERT INTO player_stats
+    public function onPlayerQuit(PlayerQuitEvent $e){
+        if($this->getPlayer($e->getPlayer()) == null){
+        $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
 			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
-            $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
+            $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
         }
+        //$this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
     }
 }
