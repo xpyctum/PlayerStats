@@ -77,11 +77,36 @@ class PlayerStats extends PluginBase implements Listener{
                 return $data["deaths"];
             }
         }
-        return false;
+        return null;
     }
-
-
-    /* ----------------- NON API PART ---------------*/
+    public function getJoins(Player $player){
+        $name = trim(strtolower($player->getName()));
+        $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
+        if($result instanceof \mysqli_result){
+            $data = $result->fetch_assoc();
+            $result->free();
+            if(isset($data["name"]) and strtolower($data["name"]) === $name){
+                unset($data["name"]);
+                return $data["joins"];
+            }
+        }
+        return null;
+    }
+    public function getDrops(Player $player){
+        $name = trim(strtolower($player->getName()));
+        $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
+        if($result instanceof \mysqli_result){
+            $data = $result->fetch_assoc();
+            $result->free();
+            if(isset($data["name"]) and strtolower($data["name"]) === $name){
+                unset($data["name"]);
+                return $data["drops"];
+            }
+        }
+        return null;
+    }
+    /* -----------------NON API PART---------------*/
+    /* EVENTS ------------------------------------*/
     public function getPlayer(Player $player){
         $name = trim(strtolower($player->getName()));
         $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
