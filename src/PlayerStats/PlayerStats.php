@@ -43,7 +43,10 @@ class PlayerStats extends PluginBase implements Listener{
 
     public function onEnable(){
         @mkdir($this->getDataFolder());
-        $this->config = new Config($this->getDataFolder()."config.yml", Config::YAML);
+        $this->saveDefaultConfig();
+        $this->reloadConfig();
+        $this->saveResource("config.yml", false);
+        $this->config = new Config($this->getDataFolder() . "config.yml");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $config = $this->config->get("mysql_settings");
         if(!isset($config["host"]) or !isset($config["user"]) or !isset($config["password"]) or !isset($config["database"])){

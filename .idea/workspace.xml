@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7f05c0e-b831-442f-9f12-ed08d67d7d64" name="Default" comment="" />
+    <list default="true" id="c7f05c0e-b831-442f-9f12-ed08d67d7d64" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PlayerStats.iml" afterPath="$PROJECT_DIR$/.idea/PlayerStats.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlayerStats/PlayerStats.php" afterPath="$PROJECT_DIR$/src/PlayerStats/PlayerStats.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="PlayerStats.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +30,7 @@
       <file leaf-file-name="PlayerStats.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="49" selection-start="2972" selection-end="2972" vertical-scroll-proportion="0.5944954" vertical-offset="1053" max-vertical-offset="2873">
+            <state line="67" column="0" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.8440367" vertical-offset="679" max-vertical-offset="2924">
               <folding>
                 <element signature="e#32#61#0" expanded="true" />
               </folding>
@@ -284,7 +288,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="49" selection-start="2972" selection-end="2972" vertical-scroll-proportion="0.5944954" vertical-offset="1053" max-vertical-offset="2873">
+        <state line="67" column="0" selection-start="2397" selection-end="2397" vertical-scroll-proportion="0.8440367" vertical-offset="679" max-vertical-offset="2924">
           <folding>
             <element signature="e#32#61#0" expanded="true" />
           </folding>
