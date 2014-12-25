@@ -64,9 +64,24 @@ class PlayerStats extends PluginBase implements Listener{
         $this->db->query(stream_get_contents($resource));
         $this->getServer()->getLogger()->info("Successfully connected to MySQL server");
     }
-    public function onDisable(){
-
+    public function onDisable(){}
+    /* ---------------- API PART -------------------*/
+    public function getDeaths(Player $player){
+        $name = trim(strtolower($player->getName()));
+        $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
+        if($result instanceof \mysqli_result){
+            $data = $result->fetch_assoc();
+            $result->free();
+            if(isset($data["name"]) and strtolower($data["name"]) === $name){
+                unset($data["name"]);
+                return $data["deaths"];
+            }
+        }
+        return false;
     }
+
+
+    /* ----------------- NON API PART ---------------*/
     public function getPlayer(Player $player){
         $name = trim(strtolower($player->getName()));
         $result = $this->db->query("SELECT * FROM player_stats WHERE name = '".$this->db->escape_string($name)."'");
