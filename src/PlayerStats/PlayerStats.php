@@ -83,7 +83,7 @@ class PlayerStats extends PluginBase implements Listener{
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
             }else{
                 $this->db->query("UPDATE player_stats SET breaks = breaks +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
@@ -96,7 +96,7 @@ class PlayerStats extends PluginBase implements Listener{
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getEntity()->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getEntity()->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
             }else{
                 $this->db->query("UPDATE player_stats SET deaths = deaths +1 WHERE name = '".strtolower($this->db->escape_string($e->getEntity()->getPlayer()->getDisplayName()))."'");
@@ -108,7 +108,7 @@ class PlayerStats extends PluginBase implements Listener{
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
             $this->db->query("UPDATE player_stats SET drops = drops +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
@@ -120,7 +120,7 @@ class PlayerStats extends PluginBase implements Listener{
                 $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
             }else{
                 $this->db->query("UPDATE player_stats SET places = places +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
@@ -132,7 +132,7 @@ class PlayerStats extends PluginBase implements Listener{
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
             $this->db->query("UPDATE player_stats SET kicked = kicked +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
@@ -143,7 +143,7 @@ class PlayerStats extends PluginBase implements Listener{
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
             $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
@@ -154,7 +154,7 @@ class PlayerStats extends PluginBase implements Listener{
             $this->db->query("INSERT INTO player_stats
 			(name, breaks, places, deaths, kicked, drops, joins, quits)
 			VALUES
-			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0' ')
+			('".$this->db->escape_string(strtolower($e->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0')
 		    ");
         }else{
             $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");

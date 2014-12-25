@@ -26,7 +26,7 @@
       <file leaf-file-name="PlayerStats.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="67" selection-start="7031" selection-end="7031" vertical-scroll-proportion="4.3688073" vertical-offset="322" max-vertical-offset="2856">
+            <state line="85" column="119" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.8440367" vertical-offset="985" max-vertical-offset="2856">
               <folding>
                 <element signature="e#44#73#0" expanded="true" />
               </folding>
@@ -282,7 +282,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PlayerStats/PlayerStats.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="67" selection-start="7031" selection-end="7031" vertical-scroll-proportion="4.3688073" vertical-offset="322" max-vertical-offset="2856">
+        <state line="85" column="119" selection-start="3286" selection-end="3286" vertical-scroll-proportion="0.8440367" vertical-offset="985" max-vertical-offset="2856">
           <folding>
             <element signature="e#44#73#0" expanded="true" />
           </folding>
