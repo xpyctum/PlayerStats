@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS player_stats (
   kicked INT,
   drops INT,
   joins INT,
-  quits INT
+  quits INT,
+  bans INT,
+  kills INT
 );
