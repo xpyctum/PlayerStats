@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS player_stats (
   places INT,
   deaths INT,
   kicked INT,
+  bans INT,
+  kills INT,
   drops INT,
   joins INT,
   quits INT
