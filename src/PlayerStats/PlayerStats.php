@@ -64,6 +64,7 @@ class PlayerStats extends PluginBase implements Listener{
         $this->getServer()->getLogger()->info("Creating query to database...");
         $resource = $this->getResource("mysql.sql");
         $this->db->query(stream_get_contents($resource));
+        @fclose($resource);
         $this->getServer()->getLogger()->info("Done!");
         $this->getServer()->getLogger()->info("Successfully connected to MySQL server!");
     }
