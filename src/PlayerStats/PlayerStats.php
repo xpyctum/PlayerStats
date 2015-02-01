@@ -138,7 +138,7 @@ class PlayerStats extends PluginBase implements Listener{
     public function BlockBreakEvent(BlockBreakEvent $e){
         if(!$e->isCancelled()){
             if($this->getPlayer($e->getPlayer()) == null){
-                $this->AddPlayer($e);
+                $this->AddPlayer($e->getPlayer());
             }else{
                 $this->db->query("UPDATE player_stats SET breaks = breaks +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
             }
@@ -146,14 +146,14 @@ class PlayerStats extends PluginBase implements Listener{
     }
     public function DeathEvent(PlayerDeathEvent $e){
             if($this->getPlayer($e->getEntity()->getPlayer()) == null){
-                 $this->AddPlayer($e);
+                 $this->AddPlayer($e->getPlayer());
             }else{
                 $this->db->query("UPDATE player_stats SET deaths = deaths +1 WHERE name = '".strtolower($this->db->escape_string($e->getEntity()->getPlayer()->getDisplayName()))."'");
             }
     }
     public function DropEvent(PlayerDropItemEvent $e){
         if($this->getPlayer($e->getPlayer()) == null){
-             $this->AddPlayer($e);
+             $this->AddPlayer($e->getPlayer());
         }else{
             $this->db->query("UPDATE player_stats SET drops = drops +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
         }
@@ -161,7 +161,7 @@ class PlayerStats extends PluginBase implements Listener{
     public function BlockPlaceEvent(BlockPlaceEvent $e){
         if(!$e->isCancelled()){
             if($this->getPlayer($e->getPlayer()) == null){
-                 $this->AddPlayer($e);
+                 $this->AddPlayer($e->getPlayer());
             }else{
                 $this->db->query("UPDATE player_stats SET places = places +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
             }
@@ -169,21 +169,21 @@ class PlayerStats extends PluginBase implements Listener{
     }
     public function KickEvent(PlayerKickEvent $e){
         if($this->getPlayer($e->getPlayer()) == null){
-             $this->AddPlayer($e);
+             $this->AddPlayer($e->getPlayer());
         }else{
             $this->db->query("UPDATE player_stats SET kicked = kicked +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
         }
     }
     public function JoinEvent(PlayerJoinEvent $e){
         if($this->getPlayer($e->getPlayer()) == null){
-             $this->AddPlayer($e);
+             $this->AddPlayer($e->getPlayer());
         }else{
             $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getDisplayName())."'");
         }
     }
     public function onPlayerQuit(PlayerQuitEvent $e){
         if($this->getPlayer($e->getPlayer()) == null){
-             $this->AddPlayer($e);
+             $this->AddPlayer($e->getPlayer());
         }else{
             $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
         }
