@@ -131,9 +131,13 @@ class PlayerStats extends PluginBase implements Listener{
             if(isset($data["name"]) and strtolower($data["name"]) === $name){
                 unset($data["name"]);
                 return $data;
+            }else{
+            	return null;
             }
+        }else{
+        	return null;
         }
-        return null;
+        
     }
     public function BlockBreakEvent(BlockBreakEvent $e){
         if(!$e->isCancelled()){
