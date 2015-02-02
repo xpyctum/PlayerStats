@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS player_stats (
   name VARCHAR(255) PRIMARY KEY,
-  breaks INT,
-  places INT,
-  deaths INT,
-  kicked INT,
-  drops INT,
-  joins INT,
-  quits INT,
-  bans INT,
-  kills INT
+  breaks INT DEFAULT 0,
+  places INT DEFAULT 0,
+  deaths INT DEFAULT 0,
+  kicked INT DEFAULT 0,
+  drops INT DEFAULT 0,
+  joins INT DEFAULT 0,
+  quits INT DEFAULT 0,
+  bans INT DEFAULT 0,
+  kills INT DEFAULT 0
 );
