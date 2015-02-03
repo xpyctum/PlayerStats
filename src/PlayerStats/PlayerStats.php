@@ -15,6 +15,7 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerKickEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -115,7 +116,7 @@ class PlayerStats extends PluginBase implements Listener{
     public function AddPlayer(Player $player){
 	if($this->getPlayer($player->getPlayer()) == null){
                 $this->db->query("INSERT INTO player_stats
-			(name, breaks, places, deaths, kicked, drops, joins, quits, kills,bans)
+			(name, breaks, places, deaths, kicked, drops, joins, quits, kills,chats)
 			VALUES
 			('".$this->db->escape_string(strtolower($player->getPlayer()->getDisplayName()))."', '0','0','0','0','0','0','0','0','0')
 		    ");
@@ -131,13 +132,9 @@ class PlayerStats extends PluginBase implements Listener{
             if(isset($data["name"]) and strtolower($data["name"]) === $name){
                 unset($data["name"]);
                 return $data;
-            }else{
-            	return null;
             }
-        }else{
-        	return null;
         }
-        
+        return null;
     }
     public function BlockBreakEvent(BlockBreakEvent $e){
         if(!$e->isCancelled()){
@@ -145,6 +142,15 @@ class PlayerStats extends PluginBase implements Listener{
                 $this->AddPlayer($e->getPlayer());
             }else{
                 $this->db->query("UPDATE player_stats SET breaks = breaks +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
+            }
+        }
+    }
+	public function onPlayerChat(PlayerChatEvent $e){
+        if(!$e->isCancelled()){
+            if($this->getPlayer($e->getPlayer()) == null){
+                $this->AddPlayer($e->getPlayer());
+            }else{
+                $this->db->query("UPDATE player_stats SET chats = chats +1 WHERE name = '".strtolower($this->db->escape_string($e->getPlayer()->getDisplayName()))."'");
             }
         }
     }
