@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS player_stats (
   drops INT DEFAULT 0,
   joins INT DEFAULT 0,
   quits INT DEFAULT 0,
-  bans INT DEFAULT 0,
+  chats INT DEFAULT 0,
   kills INT DEFAULT 0
 );
