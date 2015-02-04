@@ -155,7 +155,7 @@ class PlayerStats extends PluginBase implements Listener{
         }
     }
     public function DeathEvent(PlayerDeathEvent $e){
-            if($this->getPlayer($e->getEntity()->getPlayer()) == null){
+            if($this->getPlayer($e->getPlayer()) == null){
                  $this->AddPlayer($e->getPlayer());
             }else{
                 $this->db->query("UPDATE player_stats SET deaths = deaths +1 WHERE name = '".strtolower($this->db->escape_string($e->getEntity()->getPlayer()->getDisplayName()))."'");
