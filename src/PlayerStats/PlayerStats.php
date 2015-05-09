@@ -58,7 +58,7 @@ class PlayerStats extends PluginBase implements Listener{
         $config = $this->config->get("mysql_settings");
         if(!isset($config["host"]) or !isset($config["user"]) or !isset($config["password"]) or !isset($config["database"])){
             $this->getLogger()->critical("MISSED MYSQL SETTINGS!");
-            $this->getLogger()->critical("PLEASE, CHANGE IT IN CONFIG.YML");
+            $this->getLogger()->critical("PLEASE, CHANGE IT IN config.yml");
             $this->getLogger()->critical("PLUGIN: PlayerStats");
             return;
         }

@@ -7,7 +7,7 @@ load: POSTWORLD
 commands:
  stats:
   default: true
-  usage: "/stats"
+  usage: "/stats <user>"
   permissions: playerstats.command
 permissions:
  playerstats.command:
