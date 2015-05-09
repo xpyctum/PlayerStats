@@ -7,10 +7,10 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
-          <root url="file://C:/papka/POCKETMINE14/PocketMine-MP/src" />
+          <root url="file://$USER_HOME$/PocketMine-MP/src/pocketmine" />
         </CLASSES>
         <SOURCES>
-          <root url="file://C:/papka/POCKETMINE14/PocketMine-MP/src" />
+          <root url="file://$USER_HOME$/PocketMine-MP/src/pocketmine" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -26,4 +26,3 @@
     </orderEntry>
   </component>
 </module>
-

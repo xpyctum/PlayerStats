@@ -1,6 +1,14 @@
 name: PlayerStats
 main: PlayerStats\PlayerStats
-version: 1.0
+version: 2.0
 author: xpyctum
 api: [1.0.0]
 load: POSTWORLD
+commands:
+ stats:
+  default: true
+  usage: "/stats"
+  permissions: playerstats.command
+permissions:
+ playerstats.command:
+  default: true
