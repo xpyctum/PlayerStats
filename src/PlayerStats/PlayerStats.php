@@ -79,18 +79,17 @@ class PlayerStats extends PluginBase implements Listener{
 
     public function onDisable(){
         $this->getLogger()->info(TextFormat::RED."- PlayerStats disabled !");
-    	$this->db->close();
     }
 
     public function onCommand(CommandSender $sender,Command $command,$label,array $args){
         if($sender instanceof Player){
             if($command == "stats"){
-                if(isset($args[1])){
-                    if($args[1] instanceof Player){
-                        $stats = $this->getAll($this->getServer()->getPlayer($args[1]));
+                if(isset($args[0])){
+                    if($args[0] instanceof Player){
+                        $stats = $this->getAll($this->getServer()->getPlayer($args[0]));
                         $kills = $stats["kills"]; $deaths = $stats["deaths"]; $chats = $stats["chats"]; $breaks = $stats["breaks"];
                         $places = $stats["places"]; $kicks = $stats["kicked"]; $joins = $stats["joins"]; $quits = $stats["quits"];
-                        $sender->sendMessage(TextFormat::GREEN."---- ".$args[1]." stats");
+                        $sender->sendMessage(TextFormat::GREEN."---- ".$args[0]." stats");
                         $sender->sendMessage(TextFormat::GREEN."Kills: ".$kills);
                         $sender->sendMessage(TextFormat::GREEN."Deaths: ".$deaths);
                         $sender->sendMessage(TextFormat::GREEN."Chats: ".$chats);
@@ -405,12 +404,10 @@ class PlayerStats extends PluginBase implements Listener{
      * @param PlayerJoinEvent $e
      */
     public function JoinEvent(PlayerJoinEvent $e){
-        if(!($e->isCancelled())) {
-            if ($this->getPlayer($e->getPlayer()) == null) {
-                $this->AddPlayer($e->getPlayer());
-            } else {
-                $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '" . $this->db->escape_string($e->getPlayer()->getDisplayName()) . "'");
-            }
+        if ($this->getPlayer($e->getPlayer()) == null) {
+            $this->AddPlayer($e->getPlayer());
+        } else {
+            $this->db->query("UPDATE player_stats SET joins = joins +1 WHERE name = '" . $this->db->escape_string($e->getPlayer()->getDisplayName()) . "'");
         }
     }
 
@@ -418,13 +415,11 @@ class PlayerStats extends PluginBase implements Listener{
      * @param PlayerQuitEvent $e
      */
     public function onPlayerQuit(PlayerQuitEvent $e){
-        if(!($e->isCancelled())){
-            if ($this->getPlayer($e->getPlayer()) == null) {
-                $this->AddPlayer($e->getPlayer());
-            } else {
-                $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '" . $this->db->escape_string($e->getPlayer()->getName()) . "'") or die($this->bd->mysqli_error());
-            }
-            //$this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
+        if ($this->getPlayer($e->getPlayer()) == null) {
+            $this->AddPlayer($e->getPlayer());
+        } else {
+            $this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '" . $this->db->escape_string($e->getPlayer()->getName()) . "'") or die($this->bd->mysqli_error());
         }
+        //$this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
     }
 }
