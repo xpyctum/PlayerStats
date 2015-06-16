@@ -38,7 +38,6 @@ Developer from Russia.
 Supported by KEK!
 
 - Removed Herobrine!
-- Artem'ev Vlad Kidala.
 */
 
 class PlayerStats extends PluginBase implements Listener{
