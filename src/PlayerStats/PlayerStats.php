@@ -353,14 +353,11 @@ class PlayerStats extends PluginBase implements Listener{
         $victim = $event->getEntity();
         if($victim instanceof Player){
             $this->db->query("UPDATE player_stats SET deaths = deaths +1 WHERE name = '".strtolower($this->db->escape_string($event->getEntity()->getPlayer()->getDisplayName()))."'");
-            $cause = $event->getEntity()->getLastDamageCause()->getCause();
-            if($cause == 1){
-                $killer = $event->getEntity()->getLastDamageCause()->getEntity();
-                if($killer instanceof EntityDamageByEntityEvent){
+            $cause = $event->getEntity()->getLastDamageCause();
+                if($cause instanceof EntityDamageByEntityEvent){
+                    $killer = $cause->getDamager();
                     $this->db->query("UPDATE player_stats SET kills = kills +1 WHERE name = '".strtolower($this->db->escape_string($killer))."'");
                 }
-
-            }
         }
     }
 
