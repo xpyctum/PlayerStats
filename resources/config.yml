@@ -1,6 +1,6 @@
 mysql_settings:
- host: "127.0.0.1"
- port: 3306
- user: "user"
- password: "password"
- database: "databaseName"
+ host: "127.0.0.1" #mysql host ip
+ port: 3306 #mysql server port
+ user: "user" #mysql user
+ password: "password" #mysql password
+ database: "databaseName" #mysql database

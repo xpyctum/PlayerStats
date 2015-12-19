@@ -1,6 +1,6 @@
 name: PlayerStats
 main: PlayerStats\PlayerStats
-version: 2.1
+version: 2.1.1
 author: xpyctum
 api: [1.0.0]
 load: POSTWORLD
