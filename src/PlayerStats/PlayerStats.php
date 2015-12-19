@@ -89,7 +89,7 @@ class PlayerStats extends PluginBase implements Listener{
                             $kills = $stats["kills"]; $deaths = $stats["deaths"]; $chats = $stats["chats"]; 
                             $breaks = $stats["breaks"]; $places = $stats["places"]; 
                             $kicks = $stats["kicked"]; $joins = $stats["joins"]; $quits = $stats["quits"];
-                            $sender->sendMessage(TextFormat::GREEN . "---- " . $args[0] . " stats");
+                            $sender->sendMessage(TextFormat::GREEN . "---- " . $args[0]->getName() . " stats");
                             $sender->sendMessage(TextFormat::GREEN . "Kills: " . $kills);
                             $sender->sendMessage(TextFormat::GREEN . "Deaths: " . $deaths);
                             $sender->sendMessage(TextFormat::GREEN . "Chats: " . $chats);
