@@ -422,7 +422,7 @@ class PlayerStats extends PluginBase implements Listener{
         if(is_null($this->getPlayer($e->getPlayer()))){
             $this->AddPlayer($e->getPlayer());
         } else {
-            $this->db->query("UPDATE `player_stats` SET `quits` = quits +1 WHERE `name = '" . $this->db->escape_string($e->getPlayer()->getName()) . "'") or die($this->bd->mysqli_error());
+            $this->db->query("UPDATE `player_stats` SET `quits` = quits +1 WHERE `name = '" . $this->db->escape_string($e->getPlayer()->getName()) . "'") or die($this->db->mysqli_error());
         }
         //$this->db->query("UPDATE player_stats SET quits = quits +1 WHERE name = '".$this->db->escape_string($e->getPlayer()->getName())."'") or die($this->bd->mysqli_error());
     }
